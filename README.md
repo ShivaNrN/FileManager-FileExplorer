@@ -1,7 +1,10 @@
-# FileManager-FileExplorer
+# FileManager-FileExplorer - WorkFlow list
 
 Creating a directory explorer-manager work_flow
-V = implmented, X = TODO
+
+V = implmented, 
+
+X = TODO
 
 1. Scan Folder V
  
