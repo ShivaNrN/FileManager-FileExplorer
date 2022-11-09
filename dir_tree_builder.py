@@ -1,4 +1,4 @@
-# DirTreeBuilder_commented.py
+# dir_tree_builder
 import hashlib
 import json
 import re
