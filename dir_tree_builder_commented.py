@@ -1,4 +1,4 @@
-# dir_tree_builder
+# dir_tree_builder with comments
 import hashlib
 import json
 import re
