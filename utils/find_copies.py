@@ -28,7 +28,7 @@ def find_copies(arr):
             copies.append(
                 [arr[i][0], arr[i][1], arr[i][2], arr[i][3], get_hash(arr[i][0])]
             )
-    copiees = sorted(copies, key=lambda x: x[2], reverse=False)
+    copiees = sorted(copies, key=lambda x: x[4], reverse=False)
     return copiees
 
 
