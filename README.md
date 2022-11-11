@@ -24,11 +24,11 @@ X = TODO
   - List (csv table for excel et al., with panda) V
   - 
 4. Searching for objects of the tree  X
-  - Search by name, type, size etc...  
-  - Searching for file duplicates. Matching sizes, then hashes 
+  - Searching for file duplicates. Matching sizes, then hashes  V
+  - Search by name, type, size etc... 
   - Implement output for queries
   - 
 5. Move, Rename, Delete, Create new, Open, Copy   X
 
-6. Implement GUI? Web App? X
+6. Implement Terminal-Based input/output? GUI? Web App? X
   
