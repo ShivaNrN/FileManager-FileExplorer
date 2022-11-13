@@ -16,20 +16,40 @@ def take_json_input(the_json):
     return filelist
 
 
-def find_copies(arr):
-    result = list((k, sum(1 for i in arr if k in i)) for k in set(m[2] for m in arr))
-    helper = []
+def find_copies(all_files):
+    sizes_counter = list(
+        (k, sum(1 for i in all_files if k in i)) for k in set(m[2] for m in all_files)
+    )
+    not_unique_sizes = []
 
-    for x in range(len(result)):
-        if (result[x][1]) > 1:
-            helper.append(result[x][0])
-    for i in range(len(arr)):
-        if arr[i][2] in helper:
+    for x in range(len(sizes_counter)):
+        if (sizes_counter[x][1]) > 1:
+            not_unique_sizes.append(sizes_counter[x][0])
+    for i in range(len(all_files)):
+        if all_files[i][2] in not_unique_sizes:
             copies.append(
-                [arr[i][0], arr[i][1], arr[i][2], arr[i][3], get_hash(arr[i][0])]
+                [
+                    all_files[i][0],
+                    all_files[i][1],
+                    all_files[i][2],
+                    all_files[i][3],
+                    get_hash(all_files[i][0]),
+                ]
             )
-    copiees = sorted(copies, key=lambda x: x[4], reverse=False)
-    return copiees
+
+    sizes_counter = list(
+        (k, sum(1 for i in copies if k in i)) for k in set(m[4] for m in copies)
+    )
+    not_unique_sizes = []
+
+    for i in range(len(sizes_counter)):
+        if sizes_counter[i][1] > 1:
+            not_unique_sizes.append(sizes_counter[i][0])
+
+    copies[:] = [item for item in copies if item[4] in not_unique_sizes]
+
+    sorted_copies = sorted(copies, key=lambda x: x[4], reverse=False)
+    return sorted_copies
 
 
 def get_hash(file_path):

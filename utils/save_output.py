@@ -15,6 +15,7 @@ def save_to_dict(lists, target_path=None):
             "Type": lists[c][3],
         }
     pretty = json.dumps(all_files_dict, indent=2)
+
     # print(pretty)
 
     # selected_root = re.search(r"[^/]+$", target_path).group(0)
@@ -25,9 +26,17 @@ def save_to_dict(lists, target_path=None):
     return pretty
 
 
-def save_to_csv(lists, target_path):
-    selected_root = re.search(r"[^/]+$", target_path).group(0)
+def save_to_csv(lists, target_path, file_name):
+    selected_root = re.search(r"[^/]+$", file_name).group(0)
     desired_name = f"files[{selected_root}].csv"
+
+    for i in range(len(lists)):
+        if "\u2013" in lists[i][0]:
+            a = lists[i][0]
+            lists[i][0] = a.replace("\u2013", "-")
+            b = lists[i][1]
+            lists[i][1] = b.replace("\u2013", "-")
+
     df = pd.DataFrame(
         lists,
         columns=[
@@ -38,6 +47,6 @@ def save_to_csv(lists, target_path):
             "Hash",
         ],
     )
-    df.to_csv(os.path.join(target_path, desired_name), encoding="latin1")
+    df.to_csv(os.path.join(target_path, desired_name), encoding="latin-1")
 
-    return print(df)
+    return df
